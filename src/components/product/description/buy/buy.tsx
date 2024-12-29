@@ -2,17 +2,15 @@
 
 import Image from "next/image"
 import style from './buy.module.scss';
-import { useEffect, useState } from "react";
-import Product from "@/types/product";
+import {  useState } from "react";
 import Storage from "@/infra/storage";
 import { useAlertContext } from "@/components/alert/useAlert";
 
 export default function Buy() {
-    const [product, setProduct] = useState<Product[]>([]);
     const [quantity, setQuantity] = useState(0);
-    const [hasDiscount, setHasDiscount] = useState(true); // setHasDiscount in case it would have some dashboard to change its value
-    const [discount, setDiscount] = useState(50); // setDiscount in case it would have some dashboard to change its value
-    const [price, setPrice] = useState(250.00); // setPrice in case it would have some dashboard to change its value
+    const hasDiscount = true;
+    const discount = 50;
+    const price = 250.00; // setPrice in case it would have some dashboard to change its value
     const { triggerAlert } = useAlertContext();
 
     const addProducts = () => {
@@ -29,8 +27,6 @@ export default function Buy() {
                 Discount: discount,
             }
         ])
-
-        setProduct(newProduct)
         Storage().saveProducts(newProduct)
         triggerAlert("success", "Product added to cart! 🎉")
     }
@@ -43,13 +39,6 @@ export default function Buy() {
 
         triggerAlert("error", "How you gonna buy a negative quantity? 🤔")
     }
-
-    useEffect(() => {
-        const storedProducts = Storage().getProducts();
-        if (storedProducts) {
-            setProduct(storedProducts);
-        }
-    }, []);
 
     return (
         <section className={style.buy}>

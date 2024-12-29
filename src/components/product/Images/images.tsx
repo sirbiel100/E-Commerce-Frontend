@@ -6,10 +6,6 @@ import { useState } from "react";
 
 export default function Images() {
     const [imageIndex, setImageIndex] = useState(0);
-    const [displayButton, setDisplayButton] = useState({
-        next: true,
-        previous: false
-    })
     const [displayImageBox, setDisplayImageBox] = useState(false);
     const ImagesUrl = ["/image-product-1.jpg", "/image-product-2.jpg", "/image-product-3.jpg", "/image-product-4.jpg"];
     const ThumbnailsUrl = ["/image-product-1-thumbnail.jpg", "/image-product-2-thumbnail.jpg", "/image-product-3-thumbnail.jpg", "/image-product-4-thumbnail.jpg"];

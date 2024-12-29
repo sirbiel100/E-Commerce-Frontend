@@ -99,11 +99,11 @@
   }
 }
 
-::-webkit-scrollbar {
+.Cart::-webkit-scrollbar {
   width: 0.5em;
 }
 
-::-webkit-scrollbar-thumb {
+.Cart::-webkit-scrollbar-thumb {
   background-color: v.$Dark_Grayish_Blue;
   border-radius: 1em;
 }
