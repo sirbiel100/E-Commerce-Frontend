@@ -1,0 +1,14 @@
+.description{
+    padding: 1.5em;
+}
+
+@media screen and (min-width: 48em){
+    .description{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5em;
+        width: 50%;
+    }
+    
+}

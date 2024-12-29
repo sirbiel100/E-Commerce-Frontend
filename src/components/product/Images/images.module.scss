@@ -1,0 +1,200 @@
+@use "../../../app/variables.scss" as v;
+
+.Images {
+  position: relative;
+
+  img {
+    user-select: none;
+  }
+
+  & > main {
+    & > img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    div {
+      display: none;
+    }
+  }
+
+  .next,
+  .nextImageBox,
+  .previous,
+  .previousImageBox {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 50%;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    background-color: v.$White;
+
+    img {
+      width: 1.2em;
+      height: auto;
+    }
+  }
+
+  .next {
+    left: 100%;
+    transform: translate(-120%, -50%);
+  }
+
+  .previous {
+    left: 0;
+    transform: translate(30%, -50%) rotateZ(180deg);
+  }
+
+  span {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -150%);
+    font-size: 1.2em;
+    font-weight: v.$Bold_Weight;
+    color: v.$Very_Dark_Blue;
+    text-shadow: 0 0 0.5em v.$White;
+    user-select: none;
+    letter-spacing: 1.8;
+  }
+
+  aside {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .Images {
+    position: static;
+    & > main,
+    & > aside {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: min-content;
+      gap: 3em;
+
+      img {
+        border-radius: 1em;
+      }
+
+      & > img {
+        width: clamp(10em, 22em + 22vw, 46em);
+        height: auto;
+      }
+
+      div:nth-of-type(1) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        img {
+          position: relative;
+          width: 10em;
+          height: auto;
+          transition: all 200ms ease;
+          border: 1px solid transparent;
+        }
+
+        .active {
+          box-shadow: inset 1em 1em 1em 0.5em v.$Orange;
+          filter: brightness(0.8) contrast(0.7);
+          border: 3px solid v.$Orange;
+        }
+      }
+    }
+
+    & > aside {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+
+      & > img:last-of-type {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        transform: translate(-100%, -150%);
+        filter: brightness(3);
+        width: 2em;
+        height: auto;
+      }
+    }
+
+    .next,
+    .previous {
+      display: none;
+    }
+
+    .nextImageBox {
+      left: 100%;
+      transform: translate(-50%, -100%);
+    }
+
+    .previousImageBox {
+      left: 0;
+      transform: translate(-50%, -100%) rotateZ(180deg);
+    }
+
+    span {
+      display: none;
+    }
+
+    .shadowDiv {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100svw;
+      height: 100vh;
+      background-color: #000000e7;
+      z-index: 2;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .Images {
+    & > main,
+    & > aside {
+      & > div {
+        img {
+          cursor: pointer;
+          &:hover {
+            filter: brightness(0.8) contrast(0.7);
+          }
+        }
+      }
+    }
+
+    & > main {
+      & > img {
+        cursor: zoom-in;
+      }
+    }
+
+    & > aside {
+      & > img:last-of-type {
+        cursor: pointer;
+      }
+    }
+
+    .next,
+    .nextImageBox,
+    .previous,
+    .previousImageBox {
+      cursor: pointer;
+      &:hover {
+        img {
+            filter: invert(0.5) sepia(1) saturate(5) hue-rotate(340deg);
+        }
+      }
+    }
+  }
+}

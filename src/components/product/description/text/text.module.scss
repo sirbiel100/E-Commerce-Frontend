@@ -1,0 +1,47 @@
+@use "../../../../app/variables.scss" as v;
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5em;
+    font-size: 1.6rem;
+
+    small{
+        font-size: 1.2rem;
+        color: v.$Dark_Grayish_Blue;
+        font-weight: v.$Bold_Weight;
+        letter-spacing: 1.2;
+    }
+
+    h1{
+        font-size: clamp(1.8rem, 3vw + 2.5rem, 4rem);
+        font-weight: v.$Bold_Weight;
+        color: v.$Very_Dark_Blue;
+    }
+
+    p{
+        font-size: clamp(1.4rem, .8vw + .8rem, 1.6rem);
+        color: v.$Dark_Grayish_Blue;
+        line-height: 1.5;
+        font-weight: v.$Normal_Weight;
+        max-width: 30em;
+    }
+}
+
+@media screen and (min-width: 48em){
+    .text {
+        gap: 1.5em;
+        width: auto;
+    
+        small{
+            font-size: 1.3rem;
+        }
+
+        p{
+            line-height: 1.8;
+        }
+
+    }
+    
+}

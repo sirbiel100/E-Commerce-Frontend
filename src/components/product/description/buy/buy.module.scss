@@ -1,0 +1,130 @@
+@use "../../../../app/variables.scss" as v;
+
+.buy {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+  width: 100%;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      p {
+        font-size: clamp(1.6rem, 2vw + 2rem, 2.4rem);
+        color: v.$Very_Dark_Blue;
+        font-weight: v.$Bold_Weight;
+        letter-spacing: 1.2;
+      }
+
+      b {
+        background-color: v.$Very_Dark_Blue;
+        font-size: 1.2rem;
+        color: v.$White;
+        padding: 0.5em;
+        border-radius: 0.5em;
+      }
+    }
+
+    small {
+      font-size: 1.2rem;
+      color: v.$Dark_Grayish_Blue;
+      font-weight: v.$Bold_Weight;
+      text-decoration: line-through;
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+
+    img {
+      width: 1.2em;
+      height: auto;
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: v.$Light_Grayish_Blue;
+      padding: 1.5em;
+      border-radius: 0.5em;
+
+      span {
+        font-size: 1.4rem;
+        color: v.$Very_Dark_Blue;
+        font-weight: v.$Bold_Weight;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      width: 100%;
+      background-color: v.$Orange;
+      color: v.$Very_Dark_Blue;
+      font-size: 1.4rem;
+      font-weight: v.$Bold_Weight;
+      padding: 1em;
+      border-radius: 0.5em;
+      border: none;
+      box-shadow: 0 0.5em 1em 0 v.$Orange;
+
+      img {
+        filter: brightness(0);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .buy {
+    width: auto;
+
+    header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    main {
+      flex-direction: row;
+      div {
+        width: clamp(12em, 8em + 8vw, 18em);
+      }
+
+      button {
+        width: clamp(12em, 8em + 8vw, 20em);
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .buy {
+    main {
+      div {
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+    button {
+      cursor: pointer;
+      &:hover{
+        background-color: #ff7d1a9c;
+      }
+    }
+  }
+}

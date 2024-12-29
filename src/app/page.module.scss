@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 62em) {
+  .page {
+    gap: 8em;
+  }
+}

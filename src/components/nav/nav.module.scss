@@ -1,0 +1,128 @@
+@use "../../app/variables.scss" as v;
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+  background-color: v.$White;
+  width: 100%;
+  z-index: 2;
+
+  aside {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    img {
+      width: auto;
+      height: auto;
+
+      &:first-child {
+        z-index: 3;
+      }
+    }
+  }
+
+  & > section {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+
+    .CartSection {
+      position: relative;
+      & > div {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        transform: translateX(-50%) translateY(-50%);
+        padding: 0.2em 0.8em;
+        border-radius: 1em;
+        text-align: center;
+        background-color: v.$Orange;
+        color: v.$White;
+        z-index: 1;
+      }
+    }
+
+    img {
+      width: 2.5em;
+      height: auto;
+      image-rendering: pixelated;
+      transition: all 200ms ease;
+    }
+
+    & > img {
+      width: 4em;
+      border: 2px solid transparent;
+      border-radius: 50%;
+    }
+  }
+
+  .shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100svh;
+    background-color: v.$Black_Light_Box_Background;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 200ms ease;
+  }
+
+  .hide {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .nav {
+    section {
+      .CartSection {
+        img:hover {
+          cursor: pointer;
+          filter: brightness(0);
+        }
+      }
+      & > img:hover {
+        cursor: pointer;
+        border-color: v.$Orange;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .nav {
+    padding: 5em 0;
+    justify-content: space-between;
+    align-items: center;
+    width: clamp(38em, 45em + 45vw, 130em);
+    border-bottom: 0.01em solid v.$Dark_Grayish_Blue;
+
+    aside {
+      gap: 5em;
+      img {
+        &:first-child {
+          display: none;
+        }
+      }
+    }
+
+    & > section {
+      gap: 4em;
+      position: relative;
+
+      & > img {
+        width: 5em;
+      }
+    }
+
+    .shadow {
+      display: none;
+    }
+  }
+}
